@@ -23,7 +23,7 @@ spring:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:mysql://localhost:3306/yikatong?useUnicode=true&characterEncoding=utf8&useSSL=false
         username: root
-        password: 123456
+        password: niubi6.wz34
         hikari:
             data-source-properties:
                 cachePrepStmts: true
