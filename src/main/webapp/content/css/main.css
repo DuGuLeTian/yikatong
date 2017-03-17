@@ -1,7 +1,7 @@
 body {
-    background: #fafafa;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
+    background-image: url(../images/green_01.jpg);
+    background-size: 1920px 1080px;
+    background-repeat: no-repeat;
 }
 
 /* ==========================================================================
@@ -328,3 +328,6 @@ ui bootstrap tweaks
 
 
 /* jhipster-needle-css-add-main JHipster will add new css style */
+
+/*new*/
+
