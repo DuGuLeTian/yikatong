@@ -49,6 +49,18 @@ public class AccountResource {
     }
 
     /**
+     * 刘天宏大傻逼
+     */
+    @PostMapping(path = "/register/name",
+        produces={MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_PLAIN_VALUE})
+    @Timed
+    public ResponseEntity liu(){
+        log.debug("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
+        return new ResponseEntity<>("ok", HttpStatus.OK);
+    }
+
+
+    /**
      * POST  /register : register the user.
      *
      * @param managedUserVM the managed user View Model
