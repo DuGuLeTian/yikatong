@@ -13,7 +13,7 @@
     function stateConfig($stateProvider) {
         $stateProvider.state('rfid', {
             parent: 'app',
-            url: '/rfid',
+            url: '/rfid/:id',
             data: {
                 authorities: []
             },
