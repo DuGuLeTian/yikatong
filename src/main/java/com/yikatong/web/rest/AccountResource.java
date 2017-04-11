@@ -51,10 +51,10 @@ public class AccountResource {
     /**
      * 刘天宏大傻逼
      */
-    @PostMapping(path = "/register/name",
+    @GetMapping(path = "/register/name",
         produces={MediaType.TEXT_PLAIN_VALUE})
     @Timed
-    public ResponseEntity liu(){
+    public ResponseEntity aaa(){
         log.debug("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
         return new ResponseEntity<>("ok", HttpStatus.OK);
     }

@@ -13,6 +13,7 @@
     function RfidController ($scope, Principal, LoginService, $state) {
         var vm = this;
 
+        vm.isLost = 0;
 
     }
 })();
