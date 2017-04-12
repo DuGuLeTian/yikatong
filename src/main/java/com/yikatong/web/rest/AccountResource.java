@@ -49,12 +49,12 @@ public class AccountResource {
     }
 
     /**
-     * 刘天宏大傻逼
+     * test
      */
     @GetMapping(path = "/register/name",
         produces={MediaType.TEXT_PLAIN_VALUE})
     @Timed
-    public ResponseEntity aaa(){
+    public ResponseEntity liu(){
         log.debug("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
         return new ResponseEntity<>("ok", HttpStatus.OK);
     }
