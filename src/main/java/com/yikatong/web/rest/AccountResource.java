@@ -1,8 +1,9 @@
 package com.yikatong.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-
+import com.yikatong.domain.SBNumber;
 import com.yikatong.domain.User;
+import com.yikatong.repository.SBNumberRepository;
 import com.yikatong.repository.UserRepository;
 import com.yikatong.security.SecurityUtils;
 import com.yikatong.service.MailService;
@@ -40,12 +41,15 @@ public class AccountResource {
 
     private final MailService mailService;
 
+    private final SBNumberRepository sbNumberRepository;
+
     public AccountResource(UserRepository userRepository, UserService userService,
-                           MailService mailService) {
+                           MailService mailService,  SBNumberRepository sbNumberRepository) {
 
         this.userRepository = userRepository;
         this.userService = userService;
         this.mailService = mailService;
+        this.sbNumberRepository = sbNumberRepository;
     }
 
     /**
@@ -54,24 +58,8 @@ public class AccountResource {
     @GetMapping(path = "/register/card/{id}",
         produces = {MediaType.TEXT_PLAIN_VALUE})
     @Timed
-    public ResponseEntity cardToregisterAccount(@Valid @RequestBody ManagedUserVM managedUserVM) {
-        HttpHeaders textPlainHeaders = new HttpHeaders();
-        textPlainHeaders.setContentType(MediaType.TEXT_PLAIN);
-
-        return userRepository.findOneByLogin(managedUserVM.getLogin().toLowerCase())
-            .map(user -> new ResponseEntity<>("login already in use", textPlainHeaders, HttpStatus.BAD_REQUEST))
-            .orElseGet(() -> userRepository.findOneByEmail(managedUserVM.getEmail())
-                .map(user -> new ResponseEntity<>("e-mail address already in use", textPlainHeaders, HttpStatus.BAD_REQUEST))
-                .orElseGet(() -> {
-                    User user = userService
-                        .createUser(managedUserVM.getLogin(), managedUserVM.getPassword(),
-                            managedUserVM.getFirstName(), managedUserVM.getLastName(),
-                            managedUserVM.getEmail().toLowerCase(), managedUserVM.getImageUrl(), managedUserVM.getLangKey());
-
-                    mailService.sendActivationEmail(user);
-                    return new ResponseEntity<>(HttpStatus.CREATED);
-                })
-            );
+    public ResponseEntity cardToregisterAccount(@PathVariable Long number) {
+        return ResponseEntity.ok(sbNumberRepository.save(SBNumber.create(number)));
     }
 //
 //    public ResponseEntity cardToregisterAccount(){
